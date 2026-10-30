@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alvery Photography — Eldoret, Kenya</title>
+<meta name="description" content="Alvery Photography — weddings, graduations, birthdays, engagements, memorials, concerts, livestreams and more. Based in Eldoret, booking across Kenya, the UK and Mainland Europe.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff4d8d;--orange:#ff7c2a;--yellow:#ffd234;
+  --teal:#00c9a7;--blue:#3a86ff;--purple:#8b5cf6;
+  --dark:#1a1030;--darker:#120a22;--nav-bg:rgba(18,10,34,0.93);--mvg-bg:#26164a;--hero-base:#170d2a;--hero-shade:18,10,34;--white:#ffffff;
+  --glass:rgba(255,255,255,0.06);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--darker);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--blue));border-radius:3px;}
+
+/* ── FLOATING CALL BUTTON ── */
+.float-call{
+  position:fixed;bottom:2rem;right:2rem;z-index:9999;
+  display:flex;align-items:center;gap:0;
+  text-decoration:none;
+  animation:floatPulse 2.5s ease-in-out infinite;
+}
+.float-call-icon{
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;
+  box-shadow:0 4px 25px rgba(37,211,102,0.5);
+  transition:transform 0.3s;
+  position:relative;
+}
+.float-call-icon::before{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  background:rgba(37,211,102,0.3);animation:ripple 2s ease-out infinite;
+}
+.float-call-icon::after{
+  content:'';position:absolute;inset:-10px;border-radius:50%;
+  background:rgba(37,211,102,0.15);animation:ripple 2s ease-out infinite 0.5s;
+}
+.float-call-label{
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:var(--white);padding:0.5rem 1.2rem 0.5rem 0.5rem;
+  border-radius:0 50px 50px 0;
+  font-size:0.78rem;font-weight:800;letter-spacing:0.05em;
+  margin-left:-10px;padding-left:1.2rem;
+  box-shadow:0 4px 25px rgba(37,211,102,0.4);
+  white-space:nowrap;
+  max-width:0;overflow:hidden;
+  transition:max-width 0.4s ease,opacity 0.4s ease;
+  opacity:0;
+}
+.float-call:hover .float-call-label{max-width:200px;opacity:1;}
+.float-call:hover .float-call-icon{transform:scale(1.1);}
+@keyframes floatPulse{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes ripple{0%{transform:scale(1);opacity:0.6;}100%{transform:scale(1.6);opacity:0;}}
+
+/* ── PHONE CALL BUTTON (contact section) ── */
+.call-btn-wrap{
+  margin-top:2rem;
+  padding:1.5rem;
+  background:linear-gradient(135deg,rgba(37,211,102,0.1),rgba(18,140,126,0.1));
+  border:1px solid rgba(37,211,102,0.3);
+  border-radius:16px;
+  text-align:center;
+}
+.call-btn-label{
+  font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);font-weight:600;margin-bottom:0.8rem;
+  display:block;
+}
+.call-btn{
+  display:inline-flex;align-items:center;gap:0.8rem;
+  padding:1rem 2.5rem;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:var(--white);text-decoration:none;
+  border-radius:50px;font-weight:800;font-size:1rem;
+  letter-spacing:0.05em;
+  transition:transform 0.3s,box-shadow 0.3s;
+  box-shadow:0 4px 25px rgba(37,211,102,0.4);
+  animation:callPulse 2s ease-in-out infinite;
+}
+.call-btn:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(37,211,102,0.6);}
+.call-btn-icon{font-size:1.3rem;animation:ringBell 1.5s ease-in-out infinite;}
+@keyframes callPulse{0%,100%{box-shadow:0 4px 25px rgba(37,211,102,0.4);}50%{box-shadow:0 4px 35px rgba(37,211,102,0.7);}}
+@keyframes ringBell{0%,100%{transform:rotate(0);}25%{transform:rotate(-15deg);}75%{transform:rotate(15deg);}}
+.call-btn-number{font-size:0.85rem;color:rgba(255,255,255,0.75);margin-top:0.5rem;display:block;letter-spacing:0.1em;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:0.7rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;}
+.nav-logo img{height:52px;width:auto;object-fit:contain;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.68);text-decoration:none;font-size:0.76rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--blue));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-book{padding:0.5rem 1.4rem;background:linear-gradient(135deg,var(--pink),var(--orange));border-radius:50px;color:var(--white)!important;font-size:0.75rem;font-weight:800;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 3px 20px rgba(255,77,141,0.35);}
+.nav-book:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(255,77,141,0.55);}
+.nav-book::after{display:none!important;}
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-top:80px;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(var(--hero-shade),0.82) 0%,rgba(var(--hero-shade),0.5) 50%,rgba(var(--hero-shade),0.8) 100%);}
+@keyframes heroZoom{from{transform:scale(1.0);}to{transform:scale(1.07);}}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);animation:floatOrb 9s ease-in-out infinite;pointer-events:none;}
+.orb1{width:350px;height:350px;background:rgba(255,77,141,0.2);top:5%;left:3%;animation-delay:0s;}
+.orb2{width:250px;height:250px;background:rgba(58,134,255,0.18);top:15%;right:8%;animation-delay:-3s;}
+.orb3{width:280px;height:280px;background:rgba(0,201,167,0.15);bottom:10%;left:25%;animation-delay:-5s;}
+.orb4{width:200px;height:200px;background:rgba(255,210,52,0.12);bottom:15%;right:18%;animation-delay:-2s;}
+@keyframes floatOrb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-35px) scale(1.1);}}
+.hero-content{position:relative;z-index:2;max-width:950px;padding:2rem;}
+.hero-logo-wrap{margin-bottom:1.5rem;animation:fadeDown 0.8s ease 0.1s both;}
+.hero-logo-wrap img{height:110px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 25px rgba(255,77,141,0.5));}
+.hero-badge{display:inline-block;padding:0.4rem 1.5rem;background:linear-gradient(90deg,rgba(255,77,141,0.2),rgba(58,134,255,0.2));border:1px solid rgba(255,255,255,0.15);border-radius:50px;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem;animation:fadeDown 0.8s ease 0.2s both;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,11vw,9.5rem);letter-spacing:0.04em;line-height:0.9;margin-bottom:0.5rem;animation:fadeDown 0.8s ease 0.4s both;}
+.hero-title .line1{display:block;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-title .line2{display:block;background:linear-gradient(90deg,var(--teal),var(--blue),var(--purple));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-amp{font-family:'Dancing Script',cursive;font-size:clamp(1.5rem,4vw,3rem);color:var(--yellow);display:block;margin:0.2rem 0;animation:fadeDown 0.8s ease 0.5s both;}
+.hero-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.65);max-width:580px;margin:1.2rem auto 2.5rem;line-height:1.8;animation:fadeDown 0.8s ease 0.6s both;}
+.hero-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeDown 0.8s ease 0.8s both;}
+.btn-primary{padding:0.9rem 2.5rem;background:linear-gradient(135deg,var(--pink),var(--orange));color:var(--white);text-decoration:none;border-radius:50px;font-weight:800;font-size:0.9rem;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 4px 30px rgba(255,77,141,0.4);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(255,77,141,0.6);}
+.btn-outline{padding:0.9rem 2.5rem;background:transparent;color:var(--white);text-decoration:none;border-radius:50px;border:1.5px solid rgba(255,255,255,0.3);font-weight:700;font-size:0.9rem;transition:all 0.3s;}
+.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:var(--teal);color:var(--teal);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;display:flex;flex-direction:column;align-items:center;gap:0.5rem;animation:fadeDown 1.5s ease 1.2s both;}
+.hero-scroll::after{content:'';width:1px;height:50px;background:linear-gradient(to bottom,var(--pink),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.ticker{background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow),var(--teal),var(--blue),var(--purple),var(--pink));padding:0.65rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-block;animation:ticker 30s linear infinite;}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.2em;color:var(--dark);padding:0 2.5rem;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+section:not(#home){padding:6rem 3.5rem;}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{display:inline-block;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:700;margin-bottom:0.8rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.08em;line-height:1;}
+.section-desc{font-size:0.92rem;color:rgba(255,255,255,0.5);max-width:520px;margin:1rem auto 0;line-height:1.8;font-weight:300;}
+.gallery-section{padding:4.5rem 3.5rem;}
+.gallery-section:nth-child(odd){background:var(--darker);}
+.gallery-section:nth-child(even){background:var(--dark);}
+.category-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;}
+.category-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.category-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.1em;}
+.category-subtitle{font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;margin-top:0.2rem;font-weight:300;}
+.slider-wrapper{position:relative;overflow:hidden;border-radius:18px;}
+.slider-track{display:flex;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+.slide{min-width:calc(33.333% - 10px);margin-right:15px;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;flex-shrink:0;}
+.slide img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease,filter 0.4s ease;filter:brightness(0.88) saturate(1.1);}
+.slide:hover img{transform:scale(1.07);filter:brightness(1) saturate(1.25);}
+.slide-label{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(to top,rgba(0,0,0,0.88),transparent);font-size:0.82rem;font-weight:700;letter-spacing:0.05em;transform:translateY(10px);opacity:0;transition:all 0.4s ease;}
+.slide:hover .slide-label{transform:translateY(0);opacity:1;}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,0.25);background:rgba(0,0,0,0.65);backdrop-filter:blur(10px);color:var(--white);font-size:1.1rem;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
+.slider-btn:hover{background:rgba(255,255,255,0.2);border-color:var(--white);}
+.slider-btn.prev{left:0.8rem;}
+.slider-btn.next{right:0.8rem;}
+.slider-dots{display:flex;gap:7px;justify-content:center;margin-top:1.2rem;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.22);cursor:pointer;transition:all 0.3s;border:none;}
+.dot.active{background:var(--white);transform:scale(1.4);}
+#services{background:var(--darker);}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1300px;margin:0 auto;}
+.service-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);transition:transform 0.4s,box-shadow 0.4s;background:rgba(255,255,255,0.03);}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.service-img{height:160px;background-size:cover;background-position:center;position:relative;overflow:hidden;transition:transform 0.5s;}
+.service-card:hover .service-img{transform:scale(1.05);}
+.service-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.55));}
+.service-icon-badge{position:absolute;top:12px;left:12px;font-size:1.8rem;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5));}
+.service-body{padding:1.5rem;}
+.service-name{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:0.08em;margin-bottom:0.6rem;}
+.service-desc{font-size:0.77rem;line-height:1.8;color:rgba(255,255,255,0.52);font-weight:300;margin-bottom:1rem;}
+.service-price{display:inline-block;padding:0.35rem 1rem;border-radius:50px;font-size:0.75rem;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--orange));color:var(--dark);}
+#mvg{background:linear-gradient(135deg,var(--darker) 0%,var(--mvg-bg) 100%);position:relative;overflow:hidden;}
+.mvg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto;}
+.mvg-card{border-radius:24px;padding:3rem 2.5rem;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;transition:transform 0.4s;}
+.mvg-card::before{content:'';position:absolute;inset:0;background:var(--card-grad);opacity:0.07;transition:opacity 0.4s;}
+.mvg-card:hover{transform:translateY(-10px);}
+.mvg-card:hover::before{opacity:0.14;}
+.mvg-card:nth-child(1){--card-grad:linear-gradient(135deg,var(--pink),var(--orange));}
+.mvg-card:nth-child(2){--card-grad:linear-gradient(135deg,var(--teal),var(--blue));}
+.mvg-card:nth-child(3){--card-grad:linear-gradient(135deg,var(--yellow),var(--orange));}
+.mvg-icon{font-size:3.5rem;margin-bottom:1.5rem;display:block;}
+.mvg-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:0.06em;margin-bottom:1.2rem;line-height:1;}
+.mvg-text{font-size:0.85rem;line-height:1.9;color:rgba(255,255,255,0.6);font-weight:300;}
+.mvg-list{list-style:none;margin-top:1.2rem;text-align:left;}
+.mvg-list li{font-size:0.8rem;color:rgba(255,255,255,0.55);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-weight:300;display:flex;align-items:center;gap:0.6rem;}
+.mvg-list li::before{content:'✦';font-size:0.6rem;flex-shrink:0;}
+#about{background:var(--dark);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1200px;margin:0 auto;align-items:center;}
+.about-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 220px;gap:12px;}
+.about-img{border-radius:14px;overflow:hidden;}
+.about-img:nth-child(1){grid-row:1/3;}
+.about-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.about-img:hover img{transform:scale(1.05);}
+.about-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem;}
+.about-title{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:0.05em;margin-bottom:1.2rem;line-height:1;}
+.about-title span{background:linear-gradient(90deg,var(--teal),var(--blue));background-clip:text;-webkit-text-fill-color:transparent;}
+.about-text{font-size:0.88rem;line-height:1.95;color:rgba(255,255,255,0.6);font-weight:300;margin-bottom:1.2rem;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+.stat-box{background:var(--glass);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.2rem;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;background:linear-gradient(135deg,var(--pink),var(--orange));background-clip:text;-webkit-text-fill-color:transparent;display:block;}
+.stat-label{font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;}
+#contact{background:var(--dark);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;max-width:1100px;margin:0 auto;align-items:start;}
+.contact-info-title{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:0.08em;margin-bottom:0.8rem;background:linear-gradient(90deg,var(--pink),var(--yellow));background-clip:text;-webkit-text-fill-color:transparent;}
+.contact-info-sub{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;font-weight:300;margin-bottom:2.5rem;}
+.contact-detail{display:flex;align-items:center;gap:1rem;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.contact-detail-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;overflow:hidden;}
+.contact-detail-icon img{width:100%;height:100%;object-fit:cover;}
+.detail-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.detail-value{font-size:0.92rem;font-weight:600;margin-top:0.2rem;}
+.detail-value a{color:var(--white);text-decoration:none;transition:color 0.3s;}
+.detail-value a:hover{color:var(--pink);}
+.contact-form-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:2.8rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-group{margin-bottom:1.4rem;}
+.form-group label{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;font-weight:700;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.8rem 1rem;color:var(--white);font-family:'Nunito',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s,background 0.3s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--pink);background:rgba(255,77,141,0.07);}
+.form-group select option{background:var(--dark);color:var(--white);}
+.form-group textarea{resize:none;height:100px;}
+.submit-btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));border:none;border-radius:12px;color:var(--dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 4px 30px rgba(255,77,141,0.3);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(255,77,141,0.5);}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.form-message{display:none;padding:12px 20px;border-radius:10px;margin-top:12px;font-weight:600;font-size:0.88rem;}
+.form-message.success{background:rgba(0,201,167,0.15);border:1px solid rgba(0,201,167,0.4);color:#00c9a7;display:block;}
+.form-message.error{background:rgba(255,77,141,0.15);border:1px solid rgba(255,77,141,0.4);color:#ff4d8d;display:block;}
+.social-strip{background:var(--darker);padding:3rem 3.5rem;border-top:1px solid rgba(255,255,255,0.05);}
+.social-strip-title{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;margin-bottom:2rem;background:linear-gradient(90deg,var(--pink),var(--yellow));background-clip:text;-webkit-text-fill-color:transparent;}
+.social-grid{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
+.social-card{display:flex;align-items:center;gap:1rem;padding:1rem 2rem;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);text-decoration:none;color:var(--white);transition:transform 0.3s,box-shadow 0.3s;min-width:220px;}
+.social-card:hover{transform:translateY(-5px);}
+.social-card img{width:48px;height:48px;object-fit:contain;border-radius:10px;}
+.social-card-info .s-platform{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.social-card-info .s-handle{font-size:0.95rem;font-weight:700;margin-top:0.1rem;}
+.social-fb:hover{box-shadow:0 8px 30px rgba(24,119,242,0.4);border-color:rgba(24,119,242,0.4);}
+.social-yt:hover{box-shadow:0 8px 30px rgba(255,0,0,0.4);border-color:rgba(255,0,0,0.4);}
+.social-ig:hover{box-shadow:0 8px 30px rgba(225,48,108,0.4);border-color:rgba(225,48,108,0.4);}
+.social-wa:hover{box-shadow:0 8px 30px rgba(37,211,102,0.4);border-color:rgba(37,211,102,0.4);}
+footer{background:var(--darker);border-top:1px solid rgba(255,255,255,0.06);padding:2.5rem 3.5rem;}
+.footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.footer-logo-wrap img{height:48px;width:auto;object-fit:contain;}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-links a{font-size:0.72rem;color:rgba(255,255,255,0.38);text-decoration:none;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s;}
+.footer-links a:hover{color:var(--pink);}
+.footer-social-icons{display:flex;gap:0.8rem;}
+.footer-soc{width:38px;height:38px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,0.12);transition:transform 0.3s;display:block;}
+.footer-soc:hover{transform:scale(1.15);}
+.footer-soc img{width:100%;height:100%;object-fit:cover;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.footer-copy{font-size:0.7rem;color:rgba(255,255,255,0.28);font-weight:300;}
+.footer-tagline{font-family:'Dancing Script',cursive;font-size:1rem;color:rgba(255,255,255,0.2);}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:900px){
+  nav{padding:0.8rem 1.5rem;}
+  .nav-links{display:none;}
+  section:not(#home){padding:4rem 1.5rem;}
+  .gallery-section{padding:4rem 1.5rem;}
+  .about-grid,.contact-wrap,.mvg-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .slide{min-width:100%;margin-right:0;}
+  footer,.social-strip{padding:2rem 1.5rem;}
+  .social-grid{gap:1rem;}
+  .social-card{min-width:160px;padding:0.8rem 1.2rem;}
+  .float-call{bottom:1.5rem;right:1.5rem;}
+}
+
+
+.hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(255,77,141,.35),transparent 45%),radial-gradient(circle at 80% 20%,rgba(58,134,255,.35),transparent 45%),radial-gradient(circle at 60% 85%,rgba(0,201,167,.3),transparent 50%),var(--hero-base);animation:heroZoom 14s ease-in-out infinite alternate;}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.12em;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-brand small{font-family:'Nunito',sans-serif;font-size:.55rem;letter-spacing:.35em;display:block;-webkit-text-fill-color:rgba(255,255,255,.55);margin-top:-4px;}
+.ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;transition:transform .6s ease,filter .4s ease;filter:saturate(1.1);}
+.slide:hover .ph{transform:scale(1.07);filter:saturate(1.35);}
+.slide .tag{position:absolute;top:12px;left:12px;z-index:3;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;background:rgba(0,0,0,.55);padding:.3rem .8rem;border-radius:50px;}
+.slide-label{opacity:1;transform:none;}
+.recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+.recent-card{border-radius:20px;padding:2rem 1.6rem;border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .4s;}
+.recent-card:hover{transform:translateY(-8px);}
+.recent-card .date{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:700;}
+.recent-card .name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.06em;margin-top:.3rem;}
+.recent-card .em{position:absolute;top:14px;right:18px;font-size:2rem;opacity:.9;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;}
+.avail-note{margin-top:1.5rem;padding:1.1rem 1.3rem;border-radius:14px;background:rgba(255,210,52,.08);border:1px solid rgba(255,210,52,.3);font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.7;}
+.about-img .ph{font-size:2.6rem;}
+@media(max-width:900px){.recent-grid,.process-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.recent-grid,.process-grid,.services-grid,.form-row{grid-template-columns:1fr;}}
+
+html[data-theme="midnight"]{--dark:#0c1a33;--darker:#07101f;--nav-bg:rgba(7,16,31,0.93);--mvg-bg:#10294d;--hero-base:#081428;--hero-shade:7,16,31;}
+html[data-theme="forest"]{--dark:#0e2a24;--darker:#081a16;--nav-bg:rgba(8,26,22,0.93);--mvg-bg:#133d34;--hero-base:#0a201b;--hero-shade:8,26,22;}
+html[data-theme="wine"]{--dark:#2b0f1c;--darker:#1d0812;--nav-bg:rgba(29,8,18,0.93);--mvg-bg:#451a2e;--hero-base:#220a15;--hero-shade:29,8,18;}
+html[data-theme="charcoal"]{--dark:#17171c;--darker:#0e0e12;--nav-bg:rgba(14,14,18,0.93);--mvg-bg:#25252d;--hero-base:#121216;--hero-shade:14,14,18;}
+.theme-dots{display:flex;gap:6px;align-items:center;}
+.theme-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.35);cursor:pointer;padding:0;transition:transform .2s;}
+.theme-dot:hover,.theme-dot.on{transform:scale(1.25);border-color:#fff;}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:1.3rem;border-radius:10px;padding:.3rem .7rem;cursor:pointer;}
+.to-top{position:fixed;left:1.5rem;bottom:2rem;z-index:9998;width:44px;height:44px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 20px rgba(255,77,141,.4);}
+.to-top.show{opacity:1;pointer-events:auto;}
+.nav-links a.active{color:#fff;}
+.nav-links a.active::after{transform:scaleX(1);}
+.faq{max-width:820px;margin:0 auto;}
+.faq details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:.9rem;padding:1.1rem 1.4rem;}
+.faq summary{cursor:pointer;font-weight:800;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:1rem;}
+.faq summary::after{content:'+';color:var(--pink);font-size:1.3rem;line-height:1;}
+.faq details[open] summary::after{content:'–';}
+.faq p{margin-top:.8rem;font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.6);font-weight:300;}
+.sat-warn{display:none;margin-top:.5rem;font-size:.78rem;color:var(--yellow);font-weight:700;}
+@media(max-width:900px){
+  .menu-btn{display:block;}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:1.1rem;padding:1.5rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);}
+  .theme-dots{display:none;}
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/254729229086" target="_blank" rel="noopener" class="float-call" title="Chat on WhatsApp">
+  <div class="float-call-icon">💬</div>
+  <span class="float-call-label">WhatsApp Us</span>
+</a>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<nav>
+  <a href="#home" class="nav-logo"><span class="nav-brand">ALVERY<small>PHOTOGRAPHY</small></span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li><li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#recent">Recent</a></li><li><a href="#videography">Videography</a></li>
+    <li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-book">Book Now</a></li>
+    <li class="theme-dots" title="Change background colour"><button class="theme-dot" data-t="plum" style="background:#1a1030"></button><button class="theme-dot" data-t="midnight" style="background:#0c1a33"></button><button class="theme-dot" data-t="forest" style="background:#0e2a24"></button><button class="theme-dot" data-t="wine" style="background:#2b0f1c"></button><button class="theme-dot" data-t="charcoal" style="background:#17171c"></button></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</nav>
+
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div><div class="orb orb4"></div>
+  <div class="hero-content">
+    <div class="hero-badge">📸 🎬 Eldoret, Kenya — Booking Kenya · UK · Mainland Europe</div>
+    <h1 class="hero-title"><span class="line1">EVERY OCCASION</span><span class="line2">HELD IN A FRAME</span></h1>
+    <span class="hero-amp">Alvery Photography</span>
+    <p class="hero-sub">Alvery Photography is dedicated to capturing life’s most meaningful moments through our lenses. Let us capture those moments for you.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">🖼️ View Portfolio</a>
+      <a href="#contact" class="btn-outline">📅 Check Availability</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll Down</div>
+</section>
+
+<div class="ticker"><div class="ticker-inner"><span class="ticker-item">✦ WEDDINGS</span><span class="ticker-item">✦ GRADUATIONS</span><span class="ticker-item">✦ ANNIVERSARIES</span><span class="ticker-item">✦ BIRTHDAYS</span><span class="ticker-item">✦ ENGAGEMENTS</span><span class="ticker-item">✦ FAREWELLS</span><span class="ticker-item">✦ MEMORIALS</span><span class="ticker-item">✦ BABY SHOWERS</span><span class="ticker-item">✦ OUTINGS</span><span class="ticker-item">✦ LIVESTREAMS</span><span class="ticker-item">✦ CHOIR RECORDINGS</span><span class="ticker-item">✦ CONCERTS</span><span class="ticker-item">✦ PHOTO &amp; VIDEO EDITING</span><span class="ticker-item">✦ WEDDINGS</span><span class="ticker-item">✦ GRADUATIONS</span><span class="ticker-item">✦ ANNIVERSARIES</span><span class="ticker-item">✦ BIRTHDAYS</span><span class="ticker-item">✦ ENGAGEMENTS</span><span class="ticker-item">✦ FAREWELLS</span><span class="ticker-item">✦ MEMORIALS</span><span class="ticker-item">✦ BABY SHOWERS</span><span class="ticker-item">✦ OUTINGS</span><span class="ticker-item">✦ LIVESTREAMS</span><span class="ticker-item">✦ CHOIR RECORDINGS</span><span class="ticker-item">✦ CONCERTS</span><span class="ticker-item">✦ PHOTO &amp; VIDEO EDITING</span></div></div>
+
+<div id="portfolio">
+<div class="gallery-section">
+  <div class="category-header"><div class="category-icon" style="background:linear-gradient(90deg,#ff4d8d,#ff7c2a);">💍</div>
+  <div><h2 class="category-title" style="background:linear-gradient(90deg,#ff4d8d,#ff7c2a);background-clip:text;-webkit-text-fill-color:transparent;">WEDDINGS & ENGAGEMENTS</h2>
+  <p class="category-subtitle">Full-day coverage, pre-wedding and engagement sessions</p></div></div>
+  <div class="slider-wrapper"><div class="slider-track" id="track-wedding"><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);">💍</div><span class="tag">Wedding</span><div class="slide-label">Ceremony & reception</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">💞</div><span class="tag">Engagement</span><div class="slide-label">Engagement sessions</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);">👰</div><span class="tag">Bridal</span><div class="slide-label">Bridal prep</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#8b5cf6,#ff4d8d);">🥂</div><span class="tag">Reception</span><div class="slide-label">The celebration</div></div></div>
+  <button class="slider-btn prev" onclick="slide('wedding',-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slide('wedding',1)">&#8594;</button></div>
+  <div class="slider-dots" id="dots-wedding"></div>
+</div><div class="gallery-section">
+  <div class="category-header"><div class="category-icon" style="background:linear-gradient(90deg,#3a86ff,#8b5cf6);">🎓</div>
+  <div><h2 class="category-title" style="background:linear-gradient(90deg,#3a86ff,#8b5cf6);background-clip:text;-webkit-text-fill-color:transparent;">GRADUATIONS</h2>
+  <p class="category-subtitle">Gowning day, campus sessions and family portraits</p></div></div>
+  <div class="slider-wrapper"><div class="slider-track" id="track-graduation"><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#8b5cf6,#ff4d8d);">🎓</div><span class="tag">Graduation</span><div class="slide-label">Gowning day</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#ffd234);">📜</div><span class="tag">Campus</span><div class="slide-label">Campus portraits</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);">👨‍👩‍👧</div><span class="tag">Family</span><div class="slide-label">Family portraits</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);">🎉</div><span class="tag">Party</span><div class="slide-label">Graduation party</div></div></div>
+  <button class="slider-btn prev" onclick="slide('graduation',-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slide('graduation',1)">&#8594;</button></div>
+  <div class="slider-dots" id="dots-graduation"></div>
+</div><div class="gallery-section">
+  <div class="category-header"><div class="category-icon" style="background:linear-gradient(90deg,#ffd234,#ff7c2a);">🎂</div>
+  <div><h2 class="category-title" style="background:linear-gradient(90deg,#ffd234,#ff7c2a);background-clip:text;-webkit-text-fill-color:transparent;">BIRTHDAYS & BABY SHOWERS</h2>
+  <p class="category-subtitle">Candid and posed coverage for milestone celebrations</p></div></div>
+  <div class="slider-wrapper"><div class="slider-track" id="track-birthday"><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">🎂</div><span class="tag">Birthday</span><div class="slide-label">Milestone birthdays</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);">🍼</div><span class="tag">Baby Shower</span><div class="slide-label">Baby showers</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#8b5cf6,#ff4d8d);">🎈</div><span class="tag">Party</span><div class="slide-label">Party moments</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#ffd234);">📸</div><span class="tag">Portraits</span><div class="slide-label">Celebrant portraits</div></div></div>
+  <button class="slider-btn prev" onclick="slide('birthday',-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slide('birthday',1)">&#8594;</button></div>
+  <div class="slider-dots" id="dots-birthday"></div>
+</div><div class="gallery-section">
+  <div class="category-header"><div class="category-icon" style="background:linear-gradient(90deg,#00c9a7,#3a86ff);">⛪</div>
+  <div><h2 class="category-title" style="background:linear-gradient(90deg,#00c9a7,#3a86ff);background-clip:text;-webkit-text-fill-color:transparent;">CHURCH, CHOIR & MEMORIALS</h2>
+  <p class="category-subtitle">Parish events, choir recordings, farewells and memorial services</p></div></div>
+  <div class="slider-wrapper"><div class="slider-track" id="track-church"><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);">⛪</div><span class="tag">Church</span><div class="slide-label">Parish events</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);">🎶</div><span class="tag">Choir</span><div class="slide-label">Choir recordings</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">🕊️</div><span class="tag">Memorial</span><div class="slide-label">Memorial services</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);">👋</div><span class="tag">Farewell</span><div class="slide-label">Send-offs</div></div></div>
+  <button class="slider-btn prev" onclick="slide('church',-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slide('church',1)">&#8594;</button></div>
+  <div class="slider-dots" id="dots-church"></div>
+</div>
+</div>
+
+<section id="recent" style="background:var(--darker);">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--teal);">Recent Sessions</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--teal),var(--blue));background-clip:text;-webkit-text-fill-color:transparent;">A FEW RECENT BOOKINGS</h2>
+    <p class="section-desc">A running log of sessions across Eldoret and beyond — full galleries are delivered privately to each client.</p>
+  </div>
+  <div class="recent-grid"><div class="recent-card" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);"><span class="em">⛪</span><div class="date">SEPTEMBER 2026</div><div class="name">ACK St James Legebet</div></div><div class="recent-card" style="background:linear-gradient(135deg,#8b5cf6,#ff4d8d);"><span class="em">🎶</span><div class="date">SEPTEMBER 2026</div><div class="name">Sochoi Music Sabbath</div></div><div class="recent-card" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);"><span class="em">🎓</span><div class="date">SEPTEMBER 2026</div><div class="name">Vicky's Graduation</div></div><div class="recent-card" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);"><span class="em">🎂</span><div class="date">AUGUST 2026</div><div class="name">Michal's Birthday Party</div></div><div class="recent-card" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);"><span class="em">👨‍👩‍👧</span><div class="date">AUGUST 2026</div><div class="name">Parents' Visitation, Kapkeino</div></div><div class="recent-card" style="background:linear-gradient(135deg,#00c9a7,#ffd234);"><span class="em">📸</span><div class="date">2025</div><div class="name">Buckingham</div></div></div>
+</section>
+
+<section id="videography" style="background:var(--darker);">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--purple);">🎬 Live & Recorded</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange));background-clip:text;-webkit-text-fill-color:transparent;">VIDEOGRAPHY & LIVESTREAMS</h2>
+    <p class="section-desc">Concerts, choir recordings and livestreams — captured and streamed cleanly, so nobody misses the moment.</p>
+  </div>
+  <div class="gallery-section">
+  <div class="category-header"><div class="category-icon" style="background:linear-gradient(90deg,#8b5cf6,#ff4d8d);">🎬</div>
+  <div><h2 class="category-title" style="background:linear-gradient(90deg,#8b5cf6,#ff4d8d);background-clip:text;-webkit-text-fill-color:transparent;">CONCERTS & LIVESTREAMS</h2>
+  <p class="category-subtitle">Multi-angle concert coverage, choir recordings and live production</p></div></div>
+  <div class="slider-wrapper"><div class="slider-track" id="track-video"><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#ffd234);">🎤</div><span class="tag">Concert</span><div class="slide-label">Concert coverage</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);">📡</div><span class="tag">Livestream</span><div class="slide-label">Live production</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);">🎶</div><span class="tag">Choir</span><div class="slide-label">Choir recordings</div></div><div class="slide"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">🎞️</div><span class="tag">Highlights</span><div class="slide-label">Highlight films</div></div></div>
+  <button class="slider-btn prev" onclick="slide('video',-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slide('video',1)">&#8594;</button></div>
+  <div class="slider-dots" id="dots-video"></div>
+</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem;max-width:1200px;margin-left:auto;margin-right:auto;" class="process-grid">
+    <div style="text-align:center;padding:2rem 1.5rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:18px;"><div style="font-size:2.5rem;margin-bottom:1rem;">🎞️</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;">Event Films</div><p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.4rem;">Weddings, graduations and parties on video</p></div>
+    <div style="text-align:center;padding:2rem 1.5rem;background:rgba(255,77,141,0.08);border:1px solid rgba(255,77,141,0.2);border-radius:18px;"><div style="font-size:2.5rem;margin-bottom:1rem;">📡</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;">Livestreaming</div><p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.4rem;">For guests who can't be there in person</p></div>
+    <div style="text-align:center;padding:2rem 1.5rem;background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:18px;"><div style="font-size:2.5rem;margin-bottom:1rem;">🎶</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;">Choir Recordings</div><p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.4rem;">Clean audio and video for choirs and bands</p></div>
+    <div style="text-align:center;padding:2rem 1.5rem;background:rgba(255,210,52,0.08);border:1px solid rgba(255,210,52,0.2);border-radius:18px;"><div style="font-size:2.5rem;margin-bottom:1rem;">🎤</div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;">Concerts</div><p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.4rem;">Stage, crowd and backstage coverage</p></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--yellow);">What We Offer</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--yellow),var(--orange));background-clip:text;-webkit-text-fill-color:transparent;">OUR SERVICES</h2>
+    <p class="section-desc">Every booking is quoted to the occasion — we tailor coverage, hours and deliverables to what your day needs.</p>
+  </div>
+  <div class="services-grid" style="grid-template-columns:repeat(3,1fr);"><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);"><div class="service-img-overlay"></div><span class="service-icon-badge">💍</span></div>
+<div class="service-body"><h3 class="service-name">Wedding Photography & Videography</h3><p class="service-desc">Full-day photo and video coverage from preparation to reception.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);"><div class="service-img-overlay"></div><span class="service-icon-badge">🎓</span></div>
+<div class="service-body"><h3 class="service-name">Graduation &amp; Anniversary Photography</h3><p class="service-desc">Gowning-day and campus sessions, anniversary celebrations and family portraits.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);"><div class="service-img-overlay"></div><span class="service-icon-badge">🎂</span></div>
+<div class="service-body"><h3 class="service-name">Birthdays & Baby Showers</h3><p class="service-desc">Candid and posed coverage for milestone birthdays and baby showers alike.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#8b5cf6,#ff4d8d);"><div class="service-img-overlay"></div><span class="service-icon-badge">🕊️</span></div>
+<div class="service-body"><h3 class="service-name">Farewells & Memorials</h3><p class="service-desc">Respectful, unobtrusive documentation for send-offs and memorial services.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);"><div class="service-img-overlay"></div><span class="service-icon-badge">⛪</span></div>
+<div class="service-body"><h3 class="service-name">Church & Choir Sessions</h3><p class="service-desc">Parish events, choir recordings and Sabbath sessions — audio and video handled cleanly.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);"><div class="service-img-overlay"></div><span class="service-icon-badge">🎤</span></div>
+<div class="service-body"><h3 class="service-name">Concerts & Livestreams</h3><p class="service-desc">Live streaming for weddings, church services, concerts and events — so nobody misses the moment.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#00c9a7,#ffd234);"><div class="service-img-overlay"></div><span class="service-icon-badge">🚌</span></div>
+<div class="service-body"><h3 class="service-name">Outings & Group Events</h3><p class="service-desc">School trips, retreats, parent visitations and other group outings.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);"><div class="service-img-overlay"></div><span class="service-icon-badge">🧑‍🎨</span></div>
+<div class="service-body"><h3 class="service-name">Portraits & Crew Shoots</h3><p class="service-desc">Individual and group portrait sessions, studio or on location.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);"><div class="service-img-overlay"></div><span class="service-icon-badge">✨</span></div>
+<div class="service-body"><h3 class="service-name">Custom & Bespoke</h3><p class="service-desc">Something else in mind? If it's worth remembering, we'll build a package for it.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div><div class="service-card"><div class="service-img" style="background:linear-gradient(135deg,#00c9a7,#ffd234);"><div class="service-img-overlay"></div><span class="service-icon-badge">🎞️</span></div>
+<div class="service-body"><h3 class="service-name">Professional Photo &amp; Video Editing</h3><p class="service-desc">Colour grading, retouching and polished video edits for your own footage or ours.</p><a href="#contact" class="service-price" style="text-decoration:none;">Request a quote</a></div></div></div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-img" style="grid-row:1/3;position:relative;"><div class="ph" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);">📸</div></div>
+      <div class="about-img" style="position:relative;"><div class="ph" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">🎬</div></div>
+      <div class="about-img" style="position:relative;"><div class="ph" style="background:linear-gradient(135deg,#ffd234,#ff7c2a);">🎓</div></div>
+    </div>
+    <div>
+      <p class="about-tag">About Alvery</p>
+      <h2 class="about-title">Based in Eldoret.<br><span>Booked across three continents.</span></h2>
+      <p class="about-text">Alvery Photography is dedicated to capturing life’s most meaningful moments through our lenses. We are an Eldoret-based photography and videography studio covering weddings, graduations, anniversaries, choir productions, livestreams and everything in between. We travel for bookings across Kenya, the UK and Mainland Europe, and tailor every package to the occasion and the budget.</p>
+      <p class="about-text">Affordable, dependable, and built around getting the shot that matters — without getting in the way of the day.</p>
+      <div class="about-stats">
+        <div class="stat-box"><span class="stat-num">10+</span><span class="stat-label">Event Types</span></div>
+        <div class="stat-box"><span class="stat-num">3</span><span class="stat-label">Regions Served</span></div>
+        <div class="stat-box"><span class="stat-num">6</span><span class="stat-label">Days a Week</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mvg">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--blue);">How It Works</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--blue),var(--teal));background-clip:text;-webkit-text-fill-color:transparent;">BOOKING IN FOUR STEPS</h2>
+    <p class="section-desc">From first message to finished gallery.</p>
+  </div>
+  <div class="process-grid"><div class="mvg-card" style="padding:2.2rem 1.6rem;"><div class="mvg-title" style="color:var(--pink);font-size:3rem;">01</div><h3 class="mvg-title" style="font-size:1.5rem;">Reach out</h3><p class="mvg-text">Call, WhatsApp or send the form with your date and event type.</p></div><div class="mvg-card" style="padding:2.2rem 1.6rem;"><div class="mvg-title" style="color:var(--teal);font-size:3rem;">02</div><h3 class="mvg-title" style="font-size:1.5rem;">Get a package</h3><p class="mvg-text">We quote coverage hours, deliverables and pricing for your event.</p></div><div class="mvg-card" style="padding:2.2rem 1.6rem;"><div class="mvg-title" style="color:var(--yellow);font-size:3rem;">03</div><h3 class="mvg-title" style="font-size:1.5rem;">We shoot</h3><p class="mvg-text">Our team arrives early and covers the day start to finish.</p></div><div class="mvg-card" style="padding:2.2rem 1.6rem;"><div class="mvg-title" style="color:var(--blue);font-size:3rem;">04</div><h3 class="mvg-title" style="font-size:1.5rem;">Gallery delivered</h3><p class="mvg-text">Edited photos and video are delivered to a private online gallery.</p></div></div>
+</section>
+
+<section id="faq" style="background:var(--darker);">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--pink);">Good To Know</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--pink),var(--orange));background-clip:text;-webkit-text-fill-color:transparent;">QUICK ANSWERS</h2>
+  </div>
+  <div class="faq">
+    <details><summary>Which days are you available?</summary><p>We take bookings six days a week. We are unavailable on Saturdays.</p></details>
+    <details><summary>Do you travel for events?</summary><p>Yes. We are based in Eldoret and take bookings across Kenya, the UK and Mainland Europe. Terms and conditions apply for international bookings.</p></details>
+    <details><summary>How much does a session cost?</summary><p>Every booking is quoted to the occasion, hours and deliverables. Call, WhatsApp or send the form and we will give you a package price.</p></details>
+    <details><summary>How do I receive my photos and videos?</summary><p>Edited photos and video are delivered to a private online gallery you can view and download from.</p></details>
+    <details><summary>Can you livestream or record my event?</summary><p>Yes — livestreaming services and solo and choir video production are part of what we offer.</p></details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <p class="section-tag" style="color:var(--teal);">Get In Touch</p>
+    <h2 class="section-title" style="background:linear-gradient(90deg,var(--teal),var(--blue));background-clip:text;-webkit-text-fill-color:transparent;">TELL US ABOUT YOUR DATE</h2>
+    <p class="section-desc">For quick booking contact 07260 86011.</p>
+  </div>
+  <div class="contact-wrap">
+    <div>
+      <h3 class="contact-info-title">REACH US ANYTIME</h3>
+      <p class="contact-info-sub">Whether it's a wedding, a graduation, a choir recording or a concert — let's talk.</p>
+      <div class="contact-detail"><div class="contact-detail-icon" style="background:linear-gradient(135deg,#ff4d8d,#ff7c2a);">📍</div><div><div class="detail-label">Location</div><div class="detail-value"><a href="https://www.google.com/maps/search/?api=1&query=Eldoret%2C+Uasin+Gishu" target="_blank" rel="noopener">Eldoret, Uasin Gishu, Kenya</a></div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon" style="background:linear-gradient(135deg,#3a86ff,#8b5cf6);">📧</div><div><div class="detail-label">Email</div><div class="detail-value"><a href="mailto:alverymedia@gmail.com">alverymedia@gmail.com</a></div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon" style="background:linear-gradient(135deg,#25d366,#128c7e);">💬</div><div><div class="detail-label">WhatsApp</div><div class="detail-value"><a href="https://wa.me/254729229086" target="_blank" rel="noopener">+254 729 229 086</a></div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon" style="background:linear-gradient(135deg,#00c9a7,#3a86ff);">🌍</div><div><div class="detail-label">Coverage</div><div class="detail-value">Kenya · United Kingdom · Mainland Europe*</div></div></div>
+      <div class="call-btn-wrap">
+        <span class="call-btn-label">📞 For quick booking — call us directly!</span>
+        <a href="tel:+254726086011" class="call-btn"><span class="call-btn-icon">📞</span>Call Us Now</a>
+        <span class="call-btn-number">+254 726 086 011</span>
+      </div>
+      <div class="avail-note">🗓️ Unavailable on Saturdays. Terms and conditions apply for international bookings.</div>
+    </div>
+    <form class="contact-form-wrap" id="contactForm">
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input id="cf_name" type="text" placeholder="Your name" required></div>
+        <div class="form-group"><label>Event Date</label><input id="cf_date" type="date" required><div class="sat-warn" id="satWarn">⚠️ We are unavailable on Saturdays — please pick another day.</div></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Phone Number</label><input id="cf_phone" type="tel" placeholder="+254 700 000 000"></div>
+        <div class="form-group"><label>Location</label><input id="cf_location" type="text" placeholder="Eldoret, or elsewhere"></div>
+      </div>
+      <div class="form-group">
+        <label>Event Type</label>
+        <select id="cf_type">
+          <option>Wedding / Engagement</option><option>Graduation</option><option>Birthday / Baby Shower</option>
+          <option>Farewell / Memorial</option><option>Church / Choir Session</option><option>Concert / Livestream</option>
+          <option>Outing / Group Event</option><option>Portraits / Crew Shoot</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell us about the event</label><textarea id="cf_message" placeholder="Number of hours, guest count, anything we should know" required></textarea></div>
+      <button class="submit-btn" type="submit">🚀 Send Enquiry</button>
+      <div id="contactMessage" class="form-message"></div>
+    </form>
+  </div>
+</section>
+
+<div class="social-strip">
+  <h3 class="social-strip-title">FIND US ONLINE</h3>
+  <div class="social-grid">
+    <a href="https://www.youtube.com/@alveryphotography" target="_blank" rel="noopener" class="social-card"><span style="font-size:2rem;">▶️</span><div class="social-card-info"><div class="s-platform">YouTube</div><div class="s-handle">@alveryphotography</div></div></a>
+    <a href="https://www.tiktok.com/@alvery.media" target="_blank" rel="noopener" class="social-card"><span style="font-size:2rem;">🎵</span><div class="social-card-info"><div class="s-platform">TikTok</div><div class="s-handle">@alvery.media</div></div></a>
+    <a href="https://wa.me/254729229086" target="_blank" rel="noopener" class="social-card social-wa"><span style="font-size:2rem;">💬</span><div class="social-card-info"><div class="s-platform">WhatsApp</div><div class="s-handle">+254 729 229 086</div></div></a>
+    <a href="tel:+254726086011" class="social-card social-ig"><span style="font-size:2rem;">📞</span><div class="social-card-info"><div class="s-platform">Call</div><div class="s-handle">+254 726 086 011</div></div></a>
+    <a href="mailto:alverymedia@gmail.com" class="social-card social-fb"><span style="font-size:2rem;">📧</span><div class="social-card-info"><div class="s-platform">Email</div><div class="s-handle">alverymedia@gmail.com</div></div></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo-wrap"><span class="nav-brand">ALVERY<small>PHOTOGRAPHY</small></span></div>
+    <div class="footer-links">
+      <a href="#home">Home</a><a href="#portfolio">Portfolio</a><a href="#recent">Recent</a>
+      <a href="#videography">Videography</a><a href="#services">Services</a><a href="#contact">Contact</a><a href="https://www.youtube.com/@alveryphotography" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@alvery.media" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© <span id="yr"></span> Alvery Photography. All rights reserved. | Eldoret, Kenya</p>
+    <p class="footer-tagline">Every occasion held in a frame ✨</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var g = function(id){return document.getElementById(id).value.trim();};
+  var subject = encodeURIComponent('Booking enquiry: ' + g('cf_type') + ' — ' + g('cf_date'));
+  var body = encodeURIComponent('Name: '+g('cf_name')+'\nPhone: '+g('cf_phone')+'\nEvent date: '+g('cf_date')+'\nEvent type: '+g('cf_type')+'\nLocation: '+g('cf_location')+'\n\nDetails:\n'+g('cf_message'));
+  var msg = document.getElementById('contactMessage');
+  msg.textContent = '✅ Opening your email app with the enquiry filled in…';
+  msg.className = 'form-message success';
+  window.location.href = 'mailto:alverymedia@gmail.com?subject='+subject+'&body='+body;
+});
+const sliders={wedding:{index:0,total:4},graduation:{index:0,total:4},birthday:{index:0,total:4},church:{index:0,total:4},video:{index:0,total:4}};
+function getVisible(){return window.innerWidth<=900?1:3;}
+function buildDots(name){
+  const visible=getVisible(),s=sliders[name],maxIndex=s.total-visible;
+  const dotsEl=document.getElementById('dots-'+name);
+  if(!dotsEl)return;dotsEl.innerHTML='';
+  for(let i=0;i<=maxIndex;i++){const btn=document.createElement('button');btn.className='dot'+(i===s.index?' active':'');btn.onclick=()=>goTo(name,i);dotsEl.appendChild(btn);}
+}
+function updateDots(name){document.querySelectorAll('#dots-'+name+' .dot').forEach((d,i)=>d.classList.toggle('active',i===sliders[name].index));}
+function goTo(name,idx){
+  const visible=getVisible(),s=sliders[name],maxIndex=s.total-visible;
+  s.index=Math.max(0,Math.min(idx,maxIndex));
+  const track=document.getElementById('track-'+name);if(!track)return;
+  track.style.transform='translateX(-'+(s.index*(track.children[0].offsetWidth+15))+'px)';
+  updateDots(name);
+}
+function slide(name,dir){goTo(name,sliders[name].index+dir);}
+Object.keys(sliders).forEach(name=>buildDots(name));
+Object.keys(sliders).forEach(name=>{setInterval(()=>{const visible=getVisible(),s=sliders[name],max=s.total-visible;goTo(name,s.index>=max?0:s.index+1);},4500+Math.random()*1000);});
+window.addEventListener('resize',()=>{Object.keys(sliders).forEach(name=>{buildDots(name);goTo(name,0);});});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+document.querySelectorAll('.service-card,.stat-box,.contact-detail,.mvg-card,.social-card,.recent-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el);});
+
+// theme switcher (remembers choice)
+(function(){
+  var root=document.documentElement;
+  function setTheme(t){ if(t==='plum') root.removeAttribute('data-theme'); else root.setAttribute('data-theme',t);
+    document.querySelectorAll('.theme-dot').forEach(function(d){d.classList.toggle('on',d.dataset.t===t);});
+    try{localStorage.setItem('alvery-theme',t);}catch(e){} }
+  var saved='plum'; try{saved=localStorage.getItem('alvery-theme')||'plum';}catch(e){}
+  setTheme(saved);
+  document.querySelectorAll('.theme-dot').forEach(function(d){d.addEventListener('click',function(){setTheme(d.dataset.t);});});
+})();
+// mobile menu
+var navLinks=document.querySelector('.nav-links');
+document.getElementById('menuBtn').addEventListener('click',function(){navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open');});});
+// back to top
+var toTop=document.getElementById('toTop');
+window.addEventListener('scroll',function(){toTop.classList.toggle('show',window.scrollY>600);});
+toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+// active nav link
+var secs=document.querySelectorAll('section[id],#portfolio');
+var links=document.querySelectorAll('.nav-links a[href^="#"]');
+var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(function(x){spy.observe(x);});
+// date: no past dates, Saturday warning
+var dEl=document.getElementById('cf_date');
+dEl.min=new Date().toISOString().split('T')[0];
+dEl.addEventListener('change',function(){
+  var d=new Date(dEl.value+'T12:00:00'), sat=d.getDay()===6;
+  document.getElementById('satWarn').style.display=sat?'block':'none';
+  dEl.setCustomValidity(sat?'We are unavailable on Saturdays':'');
+});
+</script>
+</body>
+</html>
