@@ -16,3 +16,5 @@ birthday-1.jpg ... birthday-4.jpg
 church-1.jpg ... church-4.jpg
 outing-1.jpg ... outing-4.jpg
 Missing files simply show a gold tile with an icon.
+
+
